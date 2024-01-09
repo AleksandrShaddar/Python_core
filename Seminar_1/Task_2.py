@@ -16,4 +16,6 @@ if (year % MAIN_CONDITION == 0 and year % SECOND_CONDITION != 0
 else:
     pass
 
-print(f'Год {year} считается високосным' if year % MAIN_CONDITION == 0 and year % SECOND_CONDITION != 0 or year % THIRD_CONDITION == 0 else f'Год {year} не является високосным')
+# print(f'Год {year} считается високосным' if year % MAIN_CONDITION == 0
+# and year % SECOND_CONDITION != 0
+# or year % THIRD_CONDITION == 0 else f'Год {year} не является високосным')

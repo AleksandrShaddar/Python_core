@@ -1,6 +1,8 @@
 # Выведите в консоль таблицу умножения от 2х2 до 9х10 как на школьной тетрадке.
 
 FORMAT = 15
+
+
 def print_mult(n, m):
     for i in range(2, 11):
         st = ''
@@ -10,9 +12,13 @@ def print_mult(n, m):
             st += st0 + ' ' * (FORMAT - len(st0))
         print(st)
 
+
 print_mult(2, 5)
+
 print()
+
 print_mult(6, 9)
+
 
 # или
 

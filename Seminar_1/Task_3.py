@@ -8,9 +8,11 @@
 # Откажитесь от магических чисел
 # В коде должны быть один input и один print
 
+import time
 
 while True:
     number = int(input('Введите чило: '))
+    current_time = time.time()
     if not 1 <= number < 1000:
         continue
     if number < 10:
@@ -21,4 +23,33 @@ while True:
         res = (number % 10 * 100) + (number // 10 % 10 * 10) + number // 100
     break
 
+time.sleep(0.1)
+end_time = time.time()
+
 print(res)
+
+print("Время выполения :", end_time - current_time)
+
+
+# Через строки
+
+
+while True:
+    number_2 = input('Введите чило: ')
+    current_time = time.time()
+    if not 1 <= int(number_2) < 1000:
+        continue
+    if len(number_2) == 1:
+        res = int(number_2)**2
+    elif len(number_2) == 2:
+        res = int(number_2[0]) * int(number_2[1])
+    else:
+        res = number_2[::-1]
+    break
+
+time.sleep(0.1)
+end_time = time.time()
+
+print(res)
+
+print("Время выполения :", end_time - current_time)

@@ -21,19 +21,19 @@ for things in friends.values():
 all_things_unique = set(all_things)
 
 for key, value in friends.items():
+    set_1 = set()
     set_2 = set()    
     for item in value:
         if all_things.count(item) == 1:
             set_2.add(item)
-    print(f"{set_2} только у {key}" if len(set_2) > 0 else f"У {key} нет уникальных вещей")
-    set_2.clear()
-
-for key, value in friends.items():
-    set_1 = set() 
+    if len(set_2) > 0:
+        print(f"{set_2} только у {key}")
     for item in all_things:
         if item not in value and all_things.count(item) == len(friends) - 1:            
             set_1.add(item)
-    print(f"{key} не взял {set_1}" if len(set_1) > 0 else f"{key} взял все вещи")
+    if len(set_1) > 0:
+        print(f"{key} не взял {set_1}")
     set_1.clear()
+    set_2.clear()
 
 print("Друзья взяли следующие вещи: ", all_things_unique)

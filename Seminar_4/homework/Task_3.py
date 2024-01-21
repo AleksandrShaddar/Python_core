@@ -62,7 +62,7 @@ def deposit(amount): # Пополнение счёта.
         bank_account += amount
         operations.append(f'Пополнение карты на {amount} у.е. Итого {bank_account} у.е.')
     else:
-        print("Сумма должна быть кратной 50 у.е.")
+        print(f"Сумма должна быть кратной {MULTIPLICITY} у.е.")
 
 
 def withdraw(amount): # Снятие денег.
@@ -74,17 +74,17 @@ def withdraw(amount): # Снятие денег.
             bank_account -= amount + procent 
             operations.append(f"Снятие с карты {amount} у.е. Процент за снятие {procent} у.е.. Итого {bank_account} у.е.")
         else:
-            print("Сумма должна быть кратной 50 у.е.")
+            print(f"Сумма должна быть кратной {MULTIPLICITY} у.е.")
     else:
         if not check_multiplicity(amount): 
-            print("Сумма должна быть кратной 50 у.е.")
+            print(f"Сумма должна быть кратной {MULTIPLICITY} у.е.")
         operations.append(f"Недостаточно средств. Сумма с комиссией {amount + procent} у.е. На карте {bank_account} у.е.")
 
 
 def exit():
     global bank_account
     if bank_account > RICHNESS_SUM:
-        message = f"Вычтен налог на богатство 0.1% в сумме {round(bank_account / 10, 4)} у.е. "
+        message = f"Вычтен налог на богатство {RICHNESS_PERCENT}% в сумме {round(bank_account / 10, 4)} у.е. "
         bank_account -= bank_account * RICHNESS_PERCENT
         message = message + f"Итого {round(bank_account, 4)} у.е."
         operations.append(message)

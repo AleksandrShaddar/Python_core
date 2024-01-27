@@ -13,7 +13,7 @@ import datetime
 
 MONTH = {
     1: range(1, 32),
-    2: range(1, 30),
+    2: range(1, 29),
     3: range(1, 32),
     4: range(1, 31),
     5: range(1, 32),
@@ -35,7 +35,10 @@ def parse_data(date: str) -> bool:
 def date_valid(d, m, y) -> bool:
     if leap_year(y) and m ==2:
         return d in range(1, 30)
-    return d in MONTH[m]
+    if valid_month(m):
+        return d in MONTH[m]
+    else:
+        return False
 
 
 def valid_year(year: int) -> bool:
@@ -52,5 +55,5 @@ def leap_year(year: int) -> bool:
 
 
 if __name__ == '__main__':
-    print(parse_data('31.02.1996'))
-    print(parse_data('01.05.1996'))
+    print(parse_data('29.2.2021'))
+    

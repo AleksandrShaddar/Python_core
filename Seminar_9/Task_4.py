@@ -4,11 +4,9 @@
 
 def count(num: int = 1):
     def deco(func):
-        def wrapper(*args, **kwargs):
-            counter = 0
-            while counter < num:
-                result = func(*args, **kwargs)
-                counter += 1
+        def wrapper(*args, **kwargs):            
+            for _ in range(num):
+                result = func(*args, **kwargs)                
             return result
         return wrapper
     return deco
@@ -19,5 +17,5 @@ def str_conc(text_1, text_2):
     mmessage = text_1 + ' ' + text_2
     print(mmessage)
 
-
-str_conc('Day', 'Night')
+if __name__ == '__main__':
+    str_conc('Day', 'Night')

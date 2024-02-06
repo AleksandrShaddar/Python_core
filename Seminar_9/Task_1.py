@@ -7,13 +7,29 @@
 
 from random import randint
 
-def check_try():
-    numbers = int(input("До какого числа загадываем? Максимум 100. "))
-    trying = int(input("Сколько попыток вам дать? "))
-    def get_random(numbers, trying):
+# def check_try():
+#     numbers = int(input("До какого числа загадываем? Максимум 100. "))
+#     trying = int(input("Сколько попыток вам дать? "))
+#     def get_random(numbers, trying):
+#         numb = randint(1, numbers)
+#         counter = 1
+#         while counter <= trying:
+#             answer = int(input("Введите число: "))
+#             if answer == numb:
+#                 print(f"Поздравляем! Вы угадали c {counter} попытки!")
+#                 return True
+#             else:
+#                 print(f"Неверно! Попробуй еще! Осталось {trying - counter} попыток!")
+#                 counter += 1
+#         print(f"К сожалению все поппытки закончились. Вы проиграли!")
+#         return False
+#     return get_random(numbers, trying)
+
+def check_try(numbers, trying):
+    def get_random():
         numb = randint(1, numbers)
         counter = 1
-        while counter <= trying:
+        for _ in range(trying):
             answer = int(input("Введите число: "))
             if answer == numb:
                 print(f"Поздравляем! Вы угадали c {counter} попытки!")
@@ -23,6 +39,11 @@ def check_try():
                 counter += 1
         print(f"К сожалению все поппытки закончились. Вы проиграли!")
         return False
-    return get_random(numbers, trying)
+    return get_random   
 
-check_try()
+if __name__ == '__main__':
+    numbers = int(input("До какого числа загадываем? Максимум 100. "))
+    trying = int(input("Сколько попыток вам дать? "))
+    # enter = check_try(10, 3)
+    enter = check_try(numbers, trying)
+    enter()

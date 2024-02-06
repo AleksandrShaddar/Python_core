@@ -1,0 +1,10 @@
+{
+    "args=(10, 5), kwargs={}": true,
+    "args=(67, 7), kwargs={}": false,
+    "args=(39, 2), kwargs={}": false,
+    "args=(96, 4), kwargs={}": false,
+    "args=(5, 3), kwargs={}": false,
+    "args=(20, 9), kwargs={}": true,
+    "args=(28, 2), kwargs={}": false,
+    "args=(95, 4), kwargs={}": false
+}

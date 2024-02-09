@@ -20,14 +20,15 @@ class Employee(DataPerson):
     def __init__(self, id_num, *args, **kwargs):
         self.id_num = id_num        
         super().__init__(*args, **kwargs)
+        self.level = sum(map(int, id_num)) % 7
 
-    def level(self):
-        self.lvl = 0
-        for self.i in self.id_num:
-            self.lvl += int(self.i)
-        return self.lvl // 7
+    # def level(self):
+    #     self.lvl = 0
+    #     for self.i in self.id_num:
+    #         self.lvl += int(self.i)
+    #     return self.lvl // 7
 
-Director = Employee('123456', 'Andrey', 'General', 54)
+Director = Employee('534534', 'Andrey', 'General', 54)
 
 print(Director.id_num)
-print(Director.level())
+print(Director.level)

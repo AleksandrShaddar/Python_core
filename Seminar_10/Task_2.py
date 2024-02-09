@@ -6,26 +6,26 @@
 
 class Rectangle:
 
-    def __init__(self, leight, weight=None):
-        self.leight = leight
-        self.weight = weight
-        if self.weight == None:
-            self.weight = self.leight
-        else:
-            self.weight = weight
+    def __init__(self, length, width=None):
+        self.length = length
+        self.width = width if width else length
 
-    def squad(self):
-        self.S = self.leight * self.weight
-        return self.S
+        # if self.width == None:
+        #     self.width = self.length
+        # else:
+        #     self.width = width
 
-    def perim(self):
-        self.P = self.leight * 2 + self.weight * 2
-        return self.P
-    
+    def area(self):        
+        return self.length * self.width
+
+    def perim(self):       
+        return 2 * (self.length  + self.width)
+
+
 pr_1 = Rectangle(4, 5)
 pr_2 = Rectangle(2, 3)
 pr_3 = Rectangle(6)
 
-print(pr_1.squad(), pr_1.perim())
-print(pr_2.squad(), pr_2.perim())
-print(pr_3.squad(), pr_3.perim())
+print(pr_1.area(), pr_1.perim())
+print(pr_2.area(), pr_2.perim())
+print(pr_3.area(), pr_3.perim())

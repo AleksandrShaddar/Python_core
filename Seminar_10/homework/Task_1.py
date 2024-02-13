@@ -40,7 +40,7 @@ class Animal:
 
 class Bird(Animal):
     def __init__(self, name, wingspan):        
-        Animal.__init__(self, name) 
+        super().__init__(name) 
         self.wingspan = wingspan   
 
     def wing_length(self):
@@ -49,7 +49,7 @@ class Bird(Animal):
 class Fish(Animal):
     def __init__(self, name, max_depth):        
         self.max_depth = max_depth  
-        Animal.__init__(self, name) 
+        super().__init__(name) 
 
     def depth(self):
         if self.max_depth < 10:
@@ -62,7 +62,7 @@ class Fish(Animal):
 class Mammal(Animal):
     def __init__(self, name, weight):        
         self.weight = weight 
-        Animal.__init__(self, name) 
+        super().__init__(name) 
 
     def category(self):
         if self.weight < 1:
@@ -86,9 +86,9 @@ class AnimalFactory:
 
 
 # Создание экземпляров животных
-animal1 = AnimalFactory.create_animal('Birds', 'Орел', 200)
-# animal2 = AnimalFactory.create_animal('Fish', 'Лосось', 50)
-# animal3 = AnimalFactory.create_animal('Mammal', 'Слон', 5000)
+animal1 = AnimalFactory.create_animal('Bird', 'Орел', 200)
+animal2 = AnimalFactory.create_animal('Fish', 'Лосось', 50)
+animal3 = AnimalFactory.create_animal('Mammal', 'Слон', 5000)
 
 print(animal1.wing_length())
 print(animal2.depth())

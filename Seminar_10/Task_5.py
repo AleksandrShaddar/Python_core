@@ -13,7 +13,7 @@ class Bird:
         self.color = color    
 
     def specific(self):
-        print(f'{self.color=}')
+        return f'{self.color=}'
 
 
 class Fish:
@@ -23,7 +23,7 @@ class Fish:
         self.water = water
 
     def specific(self):
-        print(f'{self.water=}')
+        return f'{self.water=}'
 
 
 class Snake:
@@ -33,7 +33,7 @@ class Snake:
         self.leight = leight
 
     def specific(self):
-        print(f'{self.leight=}')
+        return f'{self.leight=}'
 
 parrot = Bird('Chirik', 'Africa', 'green')
 luna = Fish('Luna', 'Thailand', 'ocean')
@@ -43,6 +43,6 @@ print(parrot.name)
 print(luna.region)
 print(cobra.leight)
 
-parrot.specific()
-luna.specific()
-cobra.specific()
+print(parrot.specific())
+print(luna.specific())
+print(cobra.specific())

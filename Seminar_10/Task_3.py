@@ -7,7 +7,7 @@
 
 class DataPerson:
 
-    def __init__(self, name, sername, age):
+    def __init__(self, name: str, sername: str, age: int):
         self.name = name
         self.sername = sername
         self.__age = age
@@ -15,20 +15,16 @@ class DataPerson:
     def birthday(self):
         self.__age += 1
 
-    def full_name(self):
-        print(f"name: {self.name}\nsername: {self.sername}\nage: {self.__age}")
+    def __str__(self):
+        return f"{self.name}\n {self.sername}\n {self.__age}"
 
 human_1 = DataPerson('Petr', 'Petrov', 27)
 human_2 = DataPerson('Sergey', 'Serov', 30)
 
-human_1.full_name()
-human_2.full_name()
+print(human_1)
+print(human_2)
 
-# print(human_1.__age)
-
-human_1.__age = 29
-
-print(human_1.__age)
-human_1.full_name()
-human_1.birthday()
-human_1.full_name()
+# print(human_1._DataPerson__age)
+# print(human_1.full_name())
+# print(human_1.birthday())
+# print(human_1.full_name())

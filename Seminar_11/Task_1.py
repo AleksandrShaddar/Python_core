@@ -2,23 +2,22 @@
 # будут доступны все возможности str
 # дополнительно хранятся имя автора строки и время создания (time.time)
 
-import time
+from datetime import datetime
 
 
 class MyString(str):
     
-    def __new__(cls, text):
+    def __new__(cls, text, author=None):
         instance = super().__new__(cls, text)
-        instance.time = time.time()
-        # instance.author = 
-        print(f'Создал класс {cls}')
+        instance.time = datetime.now()
+        instance.author = author
         return instance
 
 
+text_1 = MyString('Hello', 'Petr')
+text_2 = MyString('World', 'Ivan')
 
-text_1 = MyString('Hello')
-text_2 = MyString('World')
-
-print(text_1 + text_2)
+print(text_1 + ' ' + text_2)
 print(text_1.time)
+print(text_1.author)
     

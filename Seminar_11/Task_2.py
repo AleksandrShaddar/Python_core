@@ -5,21 +5,27 @@
 # list-архивы также являются свойствами экземпляра
 
 class Archive:
+    _instance = None
     
-    archive = []
+    def __new__(cls, text, name):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.all_text = []
+            cls._instance.all_name = []
+        else:
+            cls._instance.all_text.append(cls._instance.text)
+            cls._instance.all_name.append(cls._instance.name)
+   
+        return cls._instance
 
-    def __init__(self, number, string):
-        self.number = number
-        self.string = string
+    def __init__(self, text: str, name: str):
+        self.text = text
+        self.name = name
 
         
-    def __new__(cls, *args, **kwargs):
-        cls.instance = super().__new__(cls)
-        cls.instance.archive.append(args)
-        return cls.instance
     
 
-ex_1 = Archive(1, 'one')
-ex_2 = Archive(2, 'two')
+ex_1 = Archive('1', 'one')
+ex_2 = Archive('2', 'two')
 
-print(ex_1.archive)
+print(ex_2.all_text)

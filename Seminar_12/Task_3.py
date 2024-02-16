@@ -4,26 +4,45 @@
 # Если переданы два параметра, считаем step=1.
 # Если передан один параметр, также считаем start=1.
 
-class Factorial:
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
 
-    def __init__(self, stop, start=1, step=1):
-        self.start = start
-        self.stop = stop
-        self.step = step
-        self.result = 1
-        if self.start > self.stop:
-            self.start, self.stop = self.stop, self.start
-    
+
+class FactorialGenerator:
+    def __init__(self, *args):
+        if len(args) == 3:
+            self.start, self.stop, self.step = args
+        elif len(args) == 2:
+            self.start, self.stop = args
+            self.step = 1
+        else:
+            self.stop = args[0]
+            self.start = 1
+            self.step = 1
+
     def __iter__(self):
         return self
 
     def __next__(self):
         while self.start <= self.stop:
-            self.result *= self.start
-            self.start += 1
-            return self.result
+            print(f'{self.start=}')
+            res = factorial(self.start)
+            self.start += self.step
+            return res
         raise StopIteration
 
-fact = Factorial(1, 5, 4)
-for res in fact:
-    print(res)
+
+gen1 = FactorialGenerator(4, 10, 2)
+for num in gen1:
+    print(num)
+
+gen2 = FactorialGenerator(5,10)
+for num in gen2:
+    print(num)
+
+gen3 = FactorialGenerator(5)
+for num in gen3:
+    print(num)
+    

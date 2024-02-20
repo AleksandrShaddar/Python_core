@@ -3,13 +3,13 @@
 # вещественное число.
 # Обрабатывайте не числовые данные как исключения.
 
-def take_numb() -> int:
+def take_numb() -> float:
     while True:
         try:
-            numb = int(input("Введите число: "))
-            break
+            numb =  float(input("Введите число: "))
+            return numb
         except ValueError:
             print("Это не число!")
-    return numb
+    
 
 print(take_numb())

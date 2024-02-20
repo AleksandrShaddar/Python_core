@@ -2,11 +2,11 @@
 # - ошибка уровня,
 # - ошибка доступа.
 
-class UserError(Exception):
+class ProjectException(Exception):
     pass
 
-class LevelError(UserError):
+class LevelError(ProjectException):
     pass
 
-class AccessError(UserError):
+class AccessError(ProjectException):
     pass

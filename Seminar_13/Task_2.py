@@ -5,7 +5,7 @@
 # возвращать дефолтное значение.
 # Реализуйте работу через обработку исключений.
 
-def get_analog(my_dict: dict, key, default_value):
+def get_analog(my_dict, key, default_value = None):
     try:
         return my_dict[key]
     except KeyError:
@@ -19,3 +19,4 @@ dict_1 = {'one': 1,
 
 print(get_analog(dict_1, 'one', 999))
 print(get_analog(dict_1, 'four', 999))
+print(get_analog(dict_1, 'three'))

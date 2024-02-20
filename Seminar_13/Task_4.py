@@ -12,45 +12,53 @@ import os
 
 
 class User:
-    def __init__(self, level, id, name, file_name):
-        self.level = level
-        self.id = id
-        self.name = name
-        self.load_or_create(file_name)
+    def __init__(self, id_: str, level: str, name: str):
+        self.id, self.level, self.name = id_, level, name
 
-    def load_or_create(self, file_name: str):
-        if file_name in os.listdir():
-            with open(file_name, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                return self.save_to_file(data, file_name)
-        with open(file_name, 'w') as f:
-            json.dump({}, f)
-        data = {}
-        return self.save_to_file(data, file_name)
+    def __eq__(self, other):
+        return self.id == other.id and self.name == other.name
 
-    def save_to_file(self, data, file_name):
-        for value in data.values():
-            if id in value:
-                raise ValueError("id уже существует")
+    def __hash__(self):
+        return hash(self.id)
 
-        data.setdefault(self.level, {})
-        data[self.level].setdefault(self.id, self.name)
+    def __repr__(self):
+        return f'User({self.id}, {self.level}, {self.name})'
 
-        with open(file_name, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4)
-        return
+def load_or_create(file_name: str):
+    if file_name in os.listdir():
+        with open(file_name, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            return data
 
-def get_users(file_name):
-    users = set()
-    with open(file_name, 'r') as f:
-        data = json.load(f)
-        for value in data.values():
-            for iden in value.values():
-                users.add(iden)
-    return users
+    with open(file_name, 'w') as f:
+        json.dump({}, f)
+    return {}
 
 
-if __name__ == '__main__':
+def enter_users(level: str, id: str, name: str, file_name: str) -> None:
+    data = load_or_create(file_name)
+    for value in data.values():
+        if id in value:
+            raise ValueError("id уже существует")
+
+    data.setdefault(level, {})
+    data[level].setdefault(id, name)
+
+    with open(file_name, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
+    return
+
+
+def load_users(file_name):
+    res = set()
+    data = load_or_create(file_name)
+    for level, value in data.items():
+        for iden, name in value.items():
+            res.add(User(iden, level, name))
+    return res
+
+
+# if __name__ == '__main__':
     # enter_users('3', '41234977', 'Ruslan', 'Task_4.json')
     # print(get_users('Task_4.json'))
     # user_2 = User('6', '77734147', 'Diana', 'Task_4.json')

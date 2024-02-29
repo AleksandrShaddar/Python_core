@@ -1,0 +1,7 @@
+DEBUG:__main__:5.0
+ERROR:__main__:Деление на ноль
+DEBUG:__main__:5.0
+ERROR:__main__:Деление на ноль
+ERROR:root:division by zero: На ноль делить нельзя
+DEBUG:root:x / y = 0.6
+DEBUG:root:x / y = 3.0
